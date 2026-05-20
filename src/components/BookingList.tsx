@@ -76,7 +76,7 @@ const BookingList = ({ isAdminMode, onBookingDelete }: BookingListProps) => {
         .channel(`bookings-channel-${Date.now()}`)
         .on(
           'postgres_changes',
-          { event: 'DELETE', schema: 'public', table: 'bookings' },
+          { event: '*', schema: 'public', table: 'bookings' },
           () => {
             fetchBookings();
           }

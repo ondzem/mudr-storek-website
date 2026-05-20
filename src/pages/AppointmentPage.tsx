@@ -111,20 +111,36 @@ const AppointmentPage = () => {
   const formRef = useRef(null);
   const summaryRef = useRef(null);
 
-  const handleLogin = e => {
+  const handleLogin = async e => {
     e.preventDefault();
-    if (loginCredentials.username === 'admin' && loginCredentials.password === 'Drazkovice2082*') {
+    try {
+      if (loginCredentials.username !== 'admin') {
+        setLoginError('Nesprávné uživatelské jméno');
+        return;
+      }
+
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: 'mudrstorek@gmail.com',
+        password: loginCredentials.password,
+      });
+
+      if (error) {
+        setLoginError('Nesprávné přihlašovací údaje');
+        return;
+      }
+
       setIsAdminMode(true);
       localStorage.setItem('isAdminLoggedIn', 'true');
       setShowLoginForm(false);
       setLoginError('');
       setLoginCredentials({ username: '', password: '' });
-    } else {
-      setLoginError('Nesprávné přihlašovací údaje');
+    } catch (err) {
+      setLoginError('Chyba při přihlášení');
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setIsAdminMode(false);
     localStorage.removeItem('isAdminLoggedIn');
   };
@@ -610,6 +626,9 @@ const AppointmentPage = () => {
     if (isNoteRequired && !formData.note.trim()) errs.push('Vyplňte prosím poznámku (povinná pro důvod "Jiné")');
     if (!isAdminMode && !formData.email) errs.push('Vyplňte prosím emailovou adresu');
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errs.push('Zadejte platnou emailovou adresu');
+    if (formData.phone && !/^\+?420?\s?\d{3}\s?\d{3}\s?\d{3}$/.test(formData.phone)) {
+      errs.push('Telefonní číslo musí být ve formátu +420 XXX XXX XXX nebo XXX XXX XXX');
+    }
     return errs;
   };
 

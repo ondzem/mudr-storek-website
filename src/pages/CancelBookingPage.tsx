@@ -28,7 +28,8 @@ const CancelBookingPage = () => {
   const [cancelling, setCancelling] = useState(false);
 
   const fetchBooking = async (token: string) => {
-    if (!token) {
+    const trimmedToken = token.trim();
+    if (!trimmedToken) {
       setError('Zadejte prosím token pro zrušení rezervace');
       setLoading(false);
       return;
@@ -40,7 +41,7 @@ const CancelBookingPage = () => {
       const { data, error: fetchError } = await supabase
         .from('bookings')
         .select('*')
-        .eq('cancellation_token', token)
+        .eq('cancellation_token', trimmedToken)
         .is('cancelled_at', null);
 
       if (fetchError || !data || data.length === 0) {
@@ -73,7 +74,7 @@ const CancelBookingPage = () => {
   // Automatické načtení rezervace, pokud je token v URL
   useEffect(() => {
     if (initialToken) {
-      fetchBooking(initialToken);
+      fetchBooking(initialToken.trim());
     } else {
       setLoading(false);
     }
@@ -82,7 +83,7 @@ const CancelBookingPage = () => {
   const handleTokenSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setTokenSubmitted(true);
-    fetchBooking(tokenInput);
+    fetchBooking(tokenInput.trim());
   };
 
   const handleCancel = async () => {
@@ -94,7 +95,7 @@ const CancelBookingPage = () => {
       const { error: deleteError } = await supabase
         .from('bookings')
         .delete()
-        .eq('cancellation_token', tokenInput)
+        .eq('cancellation_token', tokenInput.trim())
         .is('cancelled_at', null);
 
       if (deleteError) {
