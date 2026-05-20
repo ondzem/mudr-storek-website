@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-gray-900 min-h-screen;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    font-size: 28px;
+    @media (min-width: 768px) {
+      font-size: 48px;
+    }
+  }
+
+  h2 {
+    font-size: 24px;
+    @media (min-width: 768px) {
+      font-size: 36px;
+    }
+  }
+
+  h3 {
+    font-size: 20px;
+    @media (min-width: 768px) {
+      font-size: 30px;
+    }
+  }
+
+  h4 {
+    font-size: 18px;
+    @media (min-width: 768px) {
+      font-size: 24px;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-5 mx-auto max-w-7xl;
+  }
+
+  .section {
+    @apply py-10 md:py-20;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-3 transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .btn-primary {
+    @apply text-white bg-primary-500 hover:bg-primary-600 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply text-white bg-secondary-500 hover:bg-secondary-600 focus:ring-secondary-500;
+  }
+
+  .btn-outline {
+    @apply text-primary-500 bg-transparent border border-primary-500 hover:bg-primary-50 focus:ring-primary-500;
+  }
+
+  .card {
+    @apply overflow-hidden bg-white rounded-xl shadow-card mb-4 md:mb-0;
+  }
+
+  .card-body {
+    @apply p-5 md:p-6;
+  }
+
+  .form-input {
+    @apply block w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+    font-size: 16px;
+  }
+
+  .form-label {
+    @apply block mb-2 font-medium text-gray-700;
+    font-size: 14px;
+  }
+
+  .navbar-link {
+    @apply px-3 py-2 transition-colors rounded-md hover:text-primary-500 hover:bg-primary-50;
+    font-size: 16px;
+  }
+
+  .navbar-link-active {
+    @apply text-primary-500 bg-primary-50;
+  }
+  
+  /* Mobile-specific styles */
+  @media (max-width: 767px) {
+    .btn {
+      @apply w-full py-4 px-6 text-center;
+    }
+    
+    .card {
+      @apply rounded-lg shadow-sm;
+    }
+    
+    .card-body {
+      @apply p-4;
+    }
+    
+    .mobile-spaced-y > * + * {
+      @apply mt-6;
+    }
+    
+    .mobile-full-width {
+      @apply -mx-5 px-5 w-screen;
+    }
+    
+    .mobile-menu-item {
+      @apply py-3 px-4 border-b border-gray-100 block w-full text-left;
+    }
+    
+    .mobile-card {
+      @apply p-4 rounded-lg bg-white shadow-sm mb-4;
+    }
+    
+    .mobile-section-spacing {
+      @apply py-8;
+    }
+  }
+}
