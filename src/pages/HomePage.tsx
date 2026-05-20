@@ -620,7 +620,7 @@ const HomePage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto space-y-6"
+            className="max-w-6xl mx-auto space-y-6"
           >
             {[
               {
@@ -709,7 +709,7 @@ const HomePage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
               <div className="lg:col-span-3">
@@ -827,7 +827,7 @@ const HomePage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
             <div className="card shadow-card">
               <div className="flex flex-col md:grid md:grid-cols-2">

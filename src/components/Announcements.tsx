@@ -64,7 +64,7 @@ const Announcements = ({ type }: { type: 'announcement' | 'vacation' }) => {
   const filteredAnnouncements = announcements.filter((a) => a.type === type);
 
   return (
-    <div className="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
       {isLoading ? (
         <div className="text-center p-8">
           <p>Načítání...</p>

@@ -185,6 +185,7 @@ const PricingPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="max-w-6xl mx-auto"
           >
             <h2 className="mb-0 ml-6">Nadstandardní a administrativní služby</h2>
             <p className="mb-8 text-gray-600 ml-6">Platné od 5. ledna 2026</p>
@@ -260,7 +261,7 @@ const PricingPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-6xl mx-auto"
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Hotovost */}

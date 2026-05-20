@@ -919,7 +919,7 @@ const AppointmentPage = () => {
           </section>
 
           <section className="section bg-white">
-            <div className="container max-w-5xl">
+            <div className="container max-w-6xl">
               {!isSupabaseConnected && (
                 <div className="mb-6 p-4 bg-yellow-50 text-yellow-700 rounded-md flex items-center">
                   <AlertCircle className="w-5 h-5 mr-2" />

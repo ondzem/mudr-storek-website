@@ -54,7 +54,7 @@ const TermsPage = () => {
       </div>
 
       <section className="section bg-white">
-        <div className="container max-w-4xl">
+        <div className="container max-w-6xl">
           <div className="prose prose-lg mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

@@ -38,7 +38,7 @@ const OrdinacePage = () => {
 
       {/* Main Content */}
       <section className="section bg-white">
-        <div className="container max-w-5xl">
+        <div className="container max-w-6xl">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             {/* Left sidebar navigation */}
             <div className="lg:col-span-1">

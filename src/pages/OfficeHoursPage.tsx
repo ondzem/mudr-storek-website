@@ -269,7 +269,7 @@ const OfficeHoursPage = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-center mb-6">Potřebujete se objednat?</h2>
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-6xl mx-auto text-center">
               <p className="text-lg text-gray-700 mb-8">
                 Pro objednání k vyšetření můžete využít naše online objednávání, které je dostupné 24 hodin denně.
               </p>

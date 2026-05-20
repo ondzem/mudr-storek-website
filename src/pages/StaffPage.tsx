@@ -235,7 +235,7 @@ const StaffPage = () => {
       {/* Staff Members */}
       <section className="section bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 max-w-6xl mx-auto">
             {staff.map((person) => (
               <StaffMemberCard key={person.id} member={person} />
             ))}

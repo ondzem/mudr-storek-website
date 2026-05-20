@@ -135,7 +135,7 @@ const GalleryPage = () => {
       <section className="section bg-white">
         <div className="container">
           {/* Category Filter */}
-          <div className="mb-8 flex flex-wrap justify-center gap-2">
+          <div className="mb-8 flex flex-wrap justify-center gap-2 max-w-6xl mx-auto">
             {categories.map((category, index) => (
               <button
                 key={index}
@@ -152,7 +152,7 @@ const GalleryPage = () => {
           </div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto">
             {filteredItems.map((item, index) => (
               <motion.div
                 key={item.id}

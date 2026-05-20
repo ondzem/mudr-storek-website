@@ -36,7 +36,7 @@ const ContactPage = () => {
 
       {/* Main Contact Section */}
       <section className="section bg-white">
-        <div className="container max-w-5xl">
+        <div className="container max-w-6xl">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:grid-flow-col">
             {/* Left column - Building Photo */}
             <div className="flex flex-col space-y-8 lg:row-span-2">
@@ -295,7 +295,7 @@ const ContactPage = () => {
 
       {/* Map Section */}
       <section className="section bg-gray-50">
-        <div className="container max-w-5xl">
+        <div className="container max-w-6xl">
           <h2 className="text-center mb-8">Jak se k nám dostanete</h2>
           
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 mb-8">
@@ -359,7 +359,7 @@ const ContactPage = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-center mb-6">Potřebujete se objednat?</h2>
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="max-w-6xl mx-auto text-center">
               <p className="text-lg text-gray-700 mb-8">
                 Pro objednání k vyšetření můžete využít naše online objednávání, které je dostupné 24 hodin denně.
               </p>

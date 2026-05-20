@@ -229,7 +229,7 @@ export const AdminAnnouncements = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="card mb-8 max-w-3xl mx-auto"
+      className="card mb-8 max-w-6xl mx-auto"
     >
       <div className="card-body">
         <div className="flex justify-between items-center mb-4">
