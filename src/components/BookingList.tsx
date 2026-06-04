@@ -201,11 +201,16 @@ const BookingList = ({ isAdminMode, onBookingDelete }: BookingListProps) => {
       setUpdateError(`Rok narození musí být mezi 1900 a ${new Date().getFullYear()}`);
       return false;
     }
-    if (editForm.phone && !/^\+?420?\s?\d{3}\s?\d{3}\s?\d{3}$/.test(editForm.phone)) {
-      setUpdateError('Telefonní číslo musí být ve formátu +420 XXX XXX XXX nebo XXX XXX XXX');
-      return false;
+    const phone = editForm.phone?.trim();
+    if (phone) {
+      const cleanPhone = phone.replace(/\s+/g, '');
+      if (!/^(?:\+?420)?\d{9}$/.test(cleanPhone)) {
+        setUpdateError('Telefonní číslo musí být ve formátu +420 XXX XXX XXX nebo XXX XXX XXX');
+        return false;
+      }
     }
-    if (editForm.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(editForm.email)) {
+    const email = editForm.email?.trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setUpdateError('Zadejte platnou emailovou adresu');
       return false;
     }

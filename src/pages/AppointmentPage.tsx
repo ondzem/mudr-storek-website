@@ -619,15 +619,22 @@ const AppointmentPage = () => {
 
   const validateFormData = () => {
     const errs = [];
-    if (!formData.name.trim()) errs.push('Vyplňte prosím jméno a příjmení');
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const phone = formData.phone.trim();
+
+    if (!name) errs.push('Vyplňte prosím jméno a příjmení');
     if (!selectedDay) errs.push('Vyberte prosím datum návštěvy');
     if (!selectedTime) errs.push('Vyberte prosím čas návštěvy');
     if (!selectedReason) errs.push('Vyberte prosím důvod návštěvy');
     if (isNoteRequired && !formData.note.trim()) errs.push('Vyplňte prosím poznámku (povinná pro důvod "Jiné")');
-    if (!isAdminMode && !formData.email) errs.push('Vyplňte prosím emailovou adresu');
-    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errs.push('Zadejte platnou emailovou adresu');
-    if (formData.phone && !/^\+?420?\s?\d{3}\s?\d{3}\s?\d{3}$/.test(formData.phone)) {
-      errs.push('Telefonní číslo musí být ve formátu +420 XXX XXX XXX nebo XXX XXX XXX');
+    if (!isAdminMode && !email) errs.push('Vyplňte prosím emailovou adresu');
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.push('Zadejte platnou emailovou adresu');
+    if (phone) {
+      const cleanPhone = phone.replace(/\s+/g, '');
+      if (!/^(?:\+?420)?\d{9}$/.test(cleanPhone)) {
+        errs.push('Telefonní číslo musí být ve formátu +420 XXX XXX XXX nebo XXX XXX XXX');
+      }
     }
     return errs;
   };
@@ -729,8 +736,8 @@ const AppointmentPage = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
+            name: formData.name.trim(),
+            email: formData.email.trim(),
             appointment_date: apptDateString,
             appointment_time: startTime,
             reason: reasonLabel,
