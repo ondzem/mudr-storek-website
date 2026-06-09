@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Stethoscope, CheckCircle, FlaskRound as Flask, Building, Mail, Phone, FileText, HeartPulse, MoveRight, Microscope, ListChecks, CalendarCheck, Building2, XCircle } from 'lucide-react';
+import { Stethoscope, CheckCircle, FlaskRound as Flask, Building, Mail, Phone, FileText, HeartPulse, MoveRight, Microscope, ListChecks, CalendarCheck, Building2, XCircle, Briefcase, Info } from 'lucide-react';
 import { Link, Element } from 'react-scroll';
 
 const OrdinacePage = () => {
@@ -151,6 +151,18 @@ const OrdinacePage = () => {
                       >
                         <CalendarCheck className="w-5 h-5 text-primary-500 mr-3" />
                         <span>Objednávání</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="vyberove-rizeni"
+                        smooth={true}
+                        duration={500}
+                        spy={true}
+                        className="flex items-center p-4 hover:bg-gray-50 transition-colors"
+                      >
+                        <Briefcase className="w-5 h-5 text-primary-500 mr-3" />
+                        <span>Výběrové řízení</span>
                       </Link>
                     </li>
                   </ul>
@@ -537,49 +549,101 @@ const OrdinacePage = () => {
               </Element>
 
               {/* Appointment */}
-<Element name="objednavani">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
-    className="scroll-mt-24"
-  >
-    <div className="card">
-      <div className="card-body">
-        {/* Section Header */}
-        <div className="flex items-center mb-6">
-          <CalendarCheck className="w-6 h-6 text-primary-500 mr-3" />
-          <h2 className="text-2xl font-semibold">Objednávání k vyšetření</h2>
-        </div>
+              {/* Appointment */}
+              <Element name="objednavani">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="scroll-mt-24"
+                >
+                  <div className="card">
+                    <div className="card-body">
+                      {/* Section Header */}
+                      <div className="flex items-center mb-6">
+                        <CalendarCheck className="w-6 h-6 text-primary-500 mr-3" />
+                        <h2 className="text-2xl font-semibold">Objednávání k vyšetření</h2>
+                      </div>
 
-        {/* Description */}
-        <p className="mb-4">
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Online objednávání je určeno pro běžné vyšetření, které dále rozšiřujeme i o další vyšetření, jako je <strong>prevence</strong> a <strong>závodní péče</strong>.</li>
-            <li>Po vytvoření rezervace obdržíte potvrzovací email s odkazem na její zrušení (nejpozději 24 hodin před termínem).</li>
-          </ul>
-        </p>
+                      {/* Description */}
+                      <p className="mb-4">
+                        <ul className="list-disc pl-5 space-y-2">
+                          <li>Online objednávání je určeno pro běžné vyšetření, které dále rozšiřujeme i o další vyšetření, jako je <strong>prevence</strong> a <strong>závodní péče</strong>.</li>
+                          <li>Po vytvoření rezervace obdržíte potvrzovací email s odkazem na její zrušení (nejpozději 24 hodin před termínem).</li>
+                        </ul>
+                      </p>
 
-        {/* Important Note */}
-        <div className="bg-primary-50 border border-primary-100 rounded-lg p-4 flex items-start">
-          <CheckCircle className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" />
-          <p className="text-primary-800">
-            <strong>Pro delší vyšetření</strong> telefonicky kontaktujte sestru a domluvte individuální čas.
-          </p>
-        </div>
+                      {/* Important Note */}
+                      <div className="bg-primary-50 border border-primary-100 rounded-lg p-4 flex items-start">
+                        <CheckCircle className="w-5 h-5 text-primary-500 mr-3 flex-shrink-0 mt-0.5" />
+                        <p className="text-primary-800">
+                          <strong>Pro delší vyšetření</strong> telefonicky kontaktujte sestru a domluvte individuální čas.
+                        </p>
+                      </div>
 
-        {/* Call to Action */}
-        <div className="mt-6 flex justify-center">
-          <a href="/objednani" className="btn btn-primary inline-flex items-center">
-            Online objednání
-            <MoveRight className="ml-2 w-5 h-5" />
-          </a>
-        </div>
-      </div>
-    </div>
-  </motion.div>
-</Element>
+                      {/* Call to Action */}
+                      <div className="mt-6 flex justify-center">
+                        <a href="/objednani" className="btn btn-primary inline-flex items-center">
+                          Online objednání
+                          <MoveRight className="ml-2 w-5 h-5" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </Element>
+
+              {/* Selection Procedure */}
+              <Element name="vyberove-rizeni">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="scroll-mt-24"
+                >
+                  <div className="card">
+                    <div className="card-body">
+                      {/* Section Header */}
+                      <div className="flex items-center mb-6">
+                        <Briefcase className="w-6 h-6 text-primary-500 mr-3" />
+                        <h2 className="text-2xl font-semibold">Výběrové řízení</h2>
+                      </div>
+
+                      {/* Description */}
+                      <p className="mb-4 text-gray-700">
+                        Vyhlásili jsme výběrové řízení na <strong>jedno rezidenční místo</strong> pro lékaře v oboru <strong>všeobecné praktické lékařství</strong>. 
+                        Hledáme do našeho týmu motivovaného kolegu či kolegyni se zájmem o dlouhodobou spolupráci a rozvoj naší zavedené ordinace praktického lékaře.
+                      </p>
+                      
+                      <p className="mb-6 text-gray-700">
+                        Podrobné informace, kritéria výběru a pokyny k přihlášení naleznete v oficiálním dokumentu níže.
+                      </p>
+
+                      {/* Important Note / Info Callout */}
+                      <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 flex items-start mb-6">
+                        <Info className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0 mt-0.5" />
+                        <p className="text-blue-800">
+                          <strong>Máte zájem o toto místo?</strong> Prostudujte si přiložené PDF a zašlete potřebné podklady na kontaktní e-mail ordinace.
+                        </p>
+                      </div>
+
+                      {/* Call to Action */}
+                      <div className="flex justify-center">
+                        <a 
+                          href="/Vyberove_rizeni_2026.pdf" 
+                          download="Vyberove_rizeni_2026.pdf"
+                          className="btn btn-primary inline-flex items-center"
+                        >
+                          <FileText className="mr-2 w-5 h-5" />
+                          Zobrazit více (Stáhnout PDF)
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </Element>
             </div>
           </div>
         </div>
