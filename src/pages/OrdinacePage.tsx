@@ -630,7 +630,7 @@ const OrdinacePage = () => {
                       {/* Description */}
                       <p className="mb-4 text-gray-700">
                         Vyhlásili jsme výběrové řízení na <strong>jedno rezidenční místo</strong> pro lékaře v oboru <strong>všeobecné praktické lékařství</strong>. 
-                        Hledáme do našeho týmu motivovaného kolegu či kolegyni se zájmem o dlouhodobou spolupráci a rozvoj naší zavedené ordinace praktického lékaře.
+                        Místo je určeno pro lékaře v předatestační přípravě, který má zájem absolvovat specializační vzdělávání pod vedením zkušeného školitele.
                       </p>
                       
                       <p className="mb-6 text-gray-700">
