@@ -1,9 +1,25 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Stethoscope, CheckCircle, FlaskRound as Flask, Building, Mail, Phone, FileText, HeartPulse, MoveRight, Microscope, ListChecks, CalendarCheck, Building2, XCircle, Briefcase, Info } from 'lucide-react';
-import { Link, Element } from 'react-scroll';
+import { Link, Element, scroller } from 'react-scroll';
 
 const OrdinacePage = () => {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = hash.replace('#', '');
+      setTimeout(() => {
+        scroller.scrollTo(target, {
+          duration: 800,
+          delay: 0,
+          smooth: 'easeInOutQuart',
+          offset: -80, // Offset for sticky header
+        });
+      }, 300);
+    }
+  }, []);
+
   return (
     <>
       <Helmet>

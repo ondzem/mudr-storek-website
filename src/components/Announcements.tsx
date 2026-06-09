@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { supabase } from "../lib/supabase.ts";
 import { Calendar, AlertTriangle } from 'lucide-react';
@@ -61,6 +62,32 @@ const Announcements = ({ type }: { type: 'announcement' | 'vacation' }) => {
     return `${formatDate(start)} - ${formatDate(end)}`;
   };
 
+  const renderAnnouncementContent = (announcement: any) => {
+    const { content, type } = announcement;
+    if (type === 'vacation') {
+      return <p className="text-orange-700">{content}</p>;
+    }
+
+    if (content && content.toLowerCase().includes('výběrové řízení') && content.toLowerCase().includes('rezidenč')) {
+      const targetText = 'všeobecné praktické lékařství';
+      const index = content.indexOf(targetText);
+      if (index !== -1) {
+        const prefix = content.substring(0, index + targetText.length) + '.';
+        return (
+          <p className="text-gray-600">
+            {prefix} Více informací zjistíte na stránce{' '}
+            <Link to="/ordinace#vyberove-rizeni" className="text-primary-500 hover:underline font-semibold">
+              Výběrové řízení
+            </Link>
+            .
+          </p>
+        );
+      }
+    }
+
+    return <p className="text-gray-600">{content}</p>;
+  };
+
   const filteredAnnouncements = announcements.filter((a) => a.type === type);
 
   return (
@@ -90,7 +117,7 @@ const Announcements = ({ type }: { type: 'announcement' | 'vacation' }) => {
                     <h3 className={`text-xl font-semibold pr-20 ${announcement.type === 'vacation' ? 'text-orange-800' : ''}`}>{announcement.title}</h3>
                     <span className={`text-sm ${announcement.type === 'vacation' ? 'text-orange-700' : 'text-gray-500'}`}>{announcement.date}</span>
                   </div>
-                  <p className={announcement.type === 'vacation' ? 'text-orange-700' : 'text-gray-600'}>{announcement.content}</p>
+                  {renderAnnouncementContent(announcement)}
                   {announcement.vacation_start && announcement.vacation_end && (
                     <div className="mt-2 flex items-center">
                       <Calendar className="w-4 h-4 text-orange-500 mr-1" />
