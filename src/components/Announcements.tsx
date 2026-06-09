@@ -62,6 +62,14 @@ const Announcements = ({ type }: { type: 'announcement' | 'vacation' }) => {
     return `${formatDate(start)} - ${formatDate(end)}`;
   };
 
+  const renderAnnouncementTitle = (announcement: any) => {
+    const { title, content } = announcement;
+    if (content && content.toLowerCase().includes('výběrové řízení') && content.toLowerCase().includes('rezidenč')) {
+      return 'Vyhlášení výběrového řízení na rezidenční místo';
+    }
+    return title;
+  };
+
   const renderAnnouncementContent = (announcement: any) => {
     const { content, type } = announcement;
     if (type === 'vacation') {
@@ -74,13 +82,15 @@ const Announcements = ({ type }: { type: 'announcement' | 'vacation' }) => {
       if (index !== -1) {
         const prefix = content.substring(0, index + targetText.length) + '.';
         return (
-          <p className="text-gray-600">
-            {prefix} Více informací zjistíte na stránce{' '}
-            <Link to="/ordinace#vyberove-rizeni" className="text-primary-500 hover:underline font-semibold">
+          <div className="text-gray-600 flex flex-wrap items-center gap-y-2">
+            <span>{prefix} Více informací zjistíte na:</span>
+            <Link 
+              to="/ordinace#vyberove-rizeni" 
+              className="inline-flex items-center px-3 py-1.5 bg-primary-500 hover:bg-primary-600 text-white rounded-md font-medium text-sm transition-all ml-1.5 shadow-sm"
+            >
               Výběrové řízení
             </Link>
-            .
-          </p>
+          </div>
         );
       }
     }
@@ -114,7 +124,9 @@ const Announcements = ({ type }: { type: 'announcement' | 'vacation' }) => {
               >
                 <div className="card-body">
                   <div className="flex justify-between mb-2">
-                    <h3 className={`text-xl font-semibold pr-20 ${announcement.type === 'vacation' ? 'text-orange-800' : ''}`}>{announcement.title}</h3>
+                    <h3 className={`text-xl font-semibold pr-20 ${announcement.type === 'vacation' ? 'text-orange-800' : ''}`}>
+                      {renderAnnouncementTitle(announcement)}
+                    </h3>
                     <span className={`text-sm ${announcement.type === 'vacation' ? 'text-orange-700' : 'text-gray-500'}`}>{announcement.date}</span>
                   </div>
                   {renderAnnouncementContent(announcement)}
