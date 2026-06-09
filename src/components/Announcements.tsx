@@ -85,7 +85,7 @@ const Announcements = ({ type }: { type: 'announcement' | 'vacation' }) => {
           <div className="text-gray-600 flex flex-wrap items-center gap-y-2">
             <span>{prefix} Více informací zjistíte na:</span>
             <Link 
-              to="/ordinace#vyberove-rizeni" 
+              to="/informace#vyberove-rizeni" 
               className="inline-flex items-center px-3 py-1.5 bg-primary-500 hover:bg-primary-600 text-white rounded-md font-medium text-sm transition-all ml-1.5 shadow-sm"
             >
               Výběrové řízení
